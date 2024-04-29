@@ -14,16 +14,16 @@ func BenchmarkTable(b *testing.B) {
 		request string
 	}{
 		{
-			name:    "Eko",
-			request: "Eko",
+			name:    "Regi",
+			request: "Regi",
 		},
 		{
-			name:    "Kurniawan",
-			request: "Kurniawan",
+			name:    "Witanto",
+			request: "Witanto",
 		},
 		{
-			name:    "EkoKurniawanKhannedy",
-			request: "Eko Kurniawan Khannedy",
+			name:    "RegiWitantoJohn",
+			request: "Regi Witanto John",
 		},
 		{
 			name:    "Budi",
@@ -41,27 +41,27 @@ func BenchmarkTable(b *testing.B) {
 }
 
 func BenchmarkSub(b *testing.B) {
-	b.Run("Eko", func(b *testing.B) {
+	b.Run("Regi", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			HelloWorld("Eko")
+			HelloWorld("Regi")
 		}
 	})
-	b.Run("Kurniawan", func(b *testing.B) {
+	b.Run("Witanto", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			HelloWorld("Kurniawan")
+			HelloWorld("Witanto")
 		}
 	})
 }
 
 func BenchmarkHelloWorld(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		HelloWorld("Eko")
+		HelloWorld("Regi")
 	}
 }
 
-func BenchmarkHelloWorldKurniawan(b *testing.B) {
+func BenchmarkHelloWorldWitanto(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		HelloWorld("Kurniawan")
+		HelloWorld("Witanto")
 	}
 }
 
@@ -72,19 +72,19 @@ func TestTableHelloWorld(t *testing.T) {
 		expected string
 	}{
 		{
-			name:     "Eko",
-			request:  "Eko",
-			expected: "Hello Eko",
+			name:     "Regi",
+			request:  "Regi",
+			expected: "Hello Regi",
 		},
 		{
-			name:     "Kurniawan",
-			request:  "Kurniawan",
-			expected: "Hello Kurniawan",
+			name:     "Witanto",
+			request:  "Witanto",
+			expected: "Hello Witanto",
 		},
 		{
-			name:     "Khannedy",
-			request:  "Khannedy",
-			expected: "Hello Khannedy",
+			name:     "John",
+			request:  "John",
+			expected: "Hello John",
 		},
 		{
 			name:     "Budi",
@@ -107,17 +107,17 @@ func TestTableHelloWorld(t *testing.T) {
 }
 
 func TestSubTest(t *testing.T) {
-	t.Run("Eko", func(t *testing.T) {
-		result := HelloWorld("Eko")
-		require.Equal(t, "Hello Eko", result, "Result must be 'Hello Eko'")
+	t.Run("Regi", func(t *testing.T) {
+		result := HelloWorld("Regi")
+		require.Equal(t, "Hello Regi", result, "Result must be 'Hello Regi'")
 	})
-	t.Run("Kurniawan", func(t *testing.T) {
-		result := HelloWorld("Kurniawan")
-		require.Equal(t, "Hello Kurniawan", result, "Result must be 'Hello Kurniawan'")
+	t.Run("Witanto", func(t *testing.T) {
+		result := HelloWorld("Witanto")
+		require.Equal(t, "Hello Witanto", result, "Result must be 'Hello Witanto'")
 	})
-	t.Run("Khannedy", func(t *testing.T) {
-		result := HelloWorld("Khannedy")
-		require.Equal(t, "Hello Khannedy", result, "Result must be 'Hello Khannedy'")
+	t.Run("John", func(t *testing.T) {
+		result := HelloWorld("John")
+		require.Equal(t, "Hello John", result, "Result must be 'Hello John'")
 	})
 }
 
@@ -136,51 +136,51 @@ func TestSkip(t *testing.T) {
 		t.Skip("Can not run on Mac OS")
 	}
 
-	result := HelloWorld("Eko")
-	require.Equal(t, "Hello Eko", result, "Result must be 'Hello Eko'")
+	result := HelloWorld("Regi")
+	require.Equal(t, "Hello Regi", result, "Result must be 'Hello Regi'")
 }
 
 func TestHelloWorldRequire(t *testing.T) {
-	result := HelloWorld("Eko")
-	require.Equal(t, "Hello Eko", result, "Result must be 'Hello Eko'")
+	result := HelloWorld("Regi")
+	require.Equal(t, "Hello Regi", result, "Result must be 'Hello Regi'")
 	fmt.Println("TestHelloWorld with Require Done")
 }
 
 func TestHelloWorldAssert(t *testing.T) {
-	result := HelloWorld("Eko")
-	assert.Equal(t, "Hello Eko", result, "Result must be 'Hello Eko'")
+	result := HelloWorld("Regi")
+	assert.Equal(t, "Hello Regi", result, "Result must be 'Hello Regi'")
 	fmt.Println("TestHelloWorld with Assert Done")
 }
 
-func TestHelloWorldEko(t *testing.T) {
-	result := HelloWorld("Eko")
+func TestHelloWorldRegi(t *testing.T) {
+	result := HelloWorld("Regi")
 
-	if result != "Hello Eko" {
+	if result != "Hello Regi" {
 		// error
-		t.Error("Result must be 'Hello Eko'")
+		t.Error("Result must be 'Hello Regi'")
 	}
 
-	fmt.Println("TestHelloWorldEko Done")
+	fmt.Println("TestHelloWorldRegi Done")
 }
 
-func TestHelloWorldKhannedy(t *testing.T) {
-	result := HelloWorld("Khannedy")
+func TestHelloWorldJohn(t *testing.T) {
+	result := HelloWorld("John")
 
-	if result != "Hello Khannedy" {
+	if result != "Hello John" {
 		// error
-		t.Fatal("Result must be 'Hello Khannedy'")
+		t.Fatal("Result must be 'Hello John'")
 	}
 
-	fmt.Println("TestHelloWorldKhannedy Done")
+	fmt.Println("TestHelloWorldJohn Done")
 }
 
-func TestHelloWorldKurniawan(t *testing.T) {
-	result := HelloWorld("Kurniawan")
+func TestHelloWorldWitanto(t *testing.T) {
+	result := HelloWorld("Witanto")
 
-	if result != "Hello Kurniawan" {
+	if result != "Hello Witanto" {
 		// error
-		t.Fatal("Result must be 'Hello Kurniawan'")
+		t.Fatal("Result must be 'Hello Witanto'")
 	}
 
-	fmt.Println("TestHelloWorldKurniawan Done")
+	fmt.Println("TestHelloWorldWitanto Done")
 }
